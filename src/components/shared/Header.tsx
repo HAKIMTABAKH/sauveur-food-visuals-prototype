@@ -2,16 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { 
-  Search, 
-  User, 
-  MapPin, 
-  Home, 
-  List, 
-  Bell 
-} from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Home, Compass, LogIn } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NavItems = [
@@ -22,13 +13,13 @@ const NavItems = [
   },
   { 
     name: 'Discover', 
-    icon: Search, 
+    icon: Compass, 
     path: '/discover' 
   },
   { 
-    name: 'My Listings', 
-    icon: List, 
-    path: '/listings' 
+    name: 'Login', 
+    icon: LogIn, 
+    path: '/login' 
   },
 ];
 
@@ -61,53 +52,13 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="icon">
-              <MapPin className="h-[1.2rem] w-[1.2rem]" />
-            </Button>
-            <Button variant="outline" size="icon">
-              <Bell className="h-[1.2rem] w-[1.2rem]" />
-            </Button>
-          </div>
-          
-          <Link to="/profile">
-            <Avatar>
-              <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-          </Link>
-
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
-                <User className="h-[1.2rem] w-[1.2rem]" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <div className="py-6 space-y-6">
-                <nav className="flex flex-col space-y-4">
-                  {NavItems.map((item) => (
-                    <Link 
-                      key={item.name} 
-                      to={item.path} 
-                      className={cn(
-                        "flex items-center space-x-2 text-foreground font-medium hover:text-primary",
-                        location.pathname === item.path ? "text-primary" : ""
-                      )}
-                    >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.name}</span>
-                    </Link>
-                  ))}
-                  <Link to="/profile" className="text-foreground font-medium hover:text-primary">
-                    Profile
-                  </Link>
-                </nav>
-              </div>
-            </SheetContent>
-          </Sheet>
+        {/* Mobile Menu */}
+        <div className="flex flex-1 items-center justify-end space-x-4 md:hidden">
+          <Button variant="outline" size="icon" asChild>
+            <Link to="/login">
+              <LogIn className="h-[1.2rem] w-[1.2rem]" />
+            </Link>
+          </Button>
         </div>
       </div>
     </header>
@@ -115,4 +66,3 @@ const Header = () => {
 };
 
 export default Header;
-
