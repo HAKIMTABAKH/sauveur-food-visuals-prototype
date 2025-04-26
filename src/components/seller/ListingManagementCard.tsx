@@ -22,11 +22,11 @@ interface ListingManagementCardProps {
   title: string;
   image: string;
   price: string;
-  status: "active" | "pending" | "sold";
+  status: string;
   createdAt: string;
 }
 
-const ListingStatusBadge = ({ status }: { status: "active" | "pending" | "sold" }) => {
+const ListingStatusBadge = ({ status }: { status: string }) => {
   switch (status) {
     case "active":
       return <Badge className="bg-green-100 text-green-800 hover:bg-green-200">Active</Badge>;
