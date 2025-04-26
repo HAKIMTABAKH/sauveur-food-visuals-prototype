@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { mockFoodOffers } from '@/utils/mockData';
 import OfferCard from '@/components/shared/OfferCard';
+import Header from '@/components/shared/Header';  // Import the Header component
 
 const Index = () => {
   // Get a few featured offers
@@ -11,6 +12,8 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Header />  {/* Add the Header component at the top */}
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-24">
         <div className="container">
